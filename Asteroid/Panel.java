@@ -13,6 +13,7 @@ public class Panel extends JPanel{
     private boolean canShoot = true;
     private int score = 0;
     private boolean gameOver = false;
+    private int frameCount = 0;
 
     /**
      *  Creates an instance of the game panel for asteroids 
@@ -42,7 +43,7 @@ public class Panel extends JPanel{
             Font font = new Font ("font", Font.PLAIN, 55);
 		    g2.setFont (font);
 		    g2.drawString ("GAME OVER", 0, 50); //use of string text 
-            g2.drawString("Score: " + score, 0, 105);
+            g2.drawString("Score: " + (score + (frameCount/33)*10), 0, 105);
             font = new Font ("font", Font.PLAIN, 30);
             g2.setFont(font);
             g2.drawString("Restart the Game[y/n]?", 0, 140);
@@ -123,6 +124,7 @@ public class Panel extends JPanel{
             count = 0;
         }
         repaint();//repaints the panel(calls paint component)
+        frameCount++;
         return collison;
     }
 

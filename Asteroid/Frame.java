@@ -9,6 +9,7 @@ public class Frame extends JFrame implements KeyListener{
     private Panel p1 = new Panel();
     private Timer frameRate;
     private boolean gameOver = false;
+    private boolean pause = false;
     /**
      * creates the Jframe with a keylistener and a gamepanel
      */
@@ -122,6 +123,15 @@ public class Frame extends JFrame implements KeyListener{
             getContentPane().validate();
             getContentPane().repaint();
             startGame();
+        }
+        if(key == KeyEvent.VK_P){//pause
+            if(!pause){
+                frameRate.stop();
+                pause = true;
+            } else {
+                frameRate.start();
+                pause = false;
+            }
         }
     }
 
