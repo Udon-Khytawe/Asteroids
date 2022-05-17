@@ -14,4 +14,5 @@ Controls
     P: pause and unpause
     Y: restart game after game ends
     N: close game after game ends
-    
+Known Bugs:
+    The bullets may phase through small asteroids because they are going too fast and in going from one frame too the next may skip over the asteroid.
