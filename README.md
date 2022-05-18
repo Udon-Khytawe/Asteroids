@@ -1,5 +1,5 @@
 # Asteroids
-For my first attempt at making a game I made asteroids
+For my first attempt at making a game I made a version of asteroids
 The game starts immediatly when the jar file is run. 
 When the game ends a game over screen will be displayed, press 'y' to play again and 'n' to exit the program
 Scoring
@@ -16,3 +16,6 @@ Controls
     N: close game after game ends
 Known Bugs:
     The bullets may phase through small asteroids because they are going too fast and in going from one frame too the next may skip over the asteroid.
+Credits
+    Composer- Alex Kim
+    Developer- Ethan Woudwyk
