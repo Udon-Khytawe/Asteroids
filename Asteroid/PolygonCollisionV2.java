@@ -9,6 +9,9 @@ public class PolygonCollisionV2 {
      * @return true if their is a collision between the two polygons otherwise false.
      */
     public static boolean collide(Polygon p1, Polygon p2){
+        if(new Vector(p1.centerX - p2.centerX, p1.centerY - p2.centerY).abs() > 85){//tests to see wheter the asteroid is outside of collsion radius
+            return false;
+        }
         boolean collide = true; //boolean for testing whether a collision occurs
         Vector[][] normalVectors = new Vector[][]{p1.getNormalVectors(), p2.getNormalVectors()}; //normal vectors for p1 and p2
         int[][] p1Points = new int[][]{p1.getXCoords(), p1.getYCoords()}; //coordinates of p1
