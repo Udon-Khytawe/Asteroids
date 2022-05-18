@@ -1,7 +1,7 @@
 # Asteroids
 For my first attempt at making a game I made a version of asteroids
 The game starts immediatly when the jar file is run. 
-When the game ends a game over screen will be displayed, press 'y' to play again and 'n' to exit the program
+Download the Zip file if you only with to run the game, don't mess with the asteroids file because the music may not work if you do.
 Scoring
     200 Points for small asteroids
     100 Points for medium asteroids 
@@ -12,6 +12,7 @@ Controls
     Left and Right: steer the ship 
     There is NO reverse
     P: pause and unpause
+    M: mute and unmute
     Y: restart game after game ends
     N: close game after game ends
 Known Bugs:
@@ -19,3 +20,4 @@ Known Bugs:
 Credits
     Composer- Alex Kim
     Developer- Ethan Woudwyk
+Lore???
