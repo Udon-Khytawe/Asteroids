@@ -2,6 +2,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.*;
 import javax.swing.*;
+import jaco.mp3.player.MP3Player;
+import java.io.File;
 
 public class Frame extends JFrame implements KeyListener{
     private boolean[] upDownLeftRight = new boolean[4];//{up, down, left, right}
@@ -10,11 +12,30 @@ public class Frame extends JFrame implements KeyListener{
     private Timer frameRate;
     private boolean gameOver = false;
     private boolean pause = false;
+    private boolean mute = false;
+    private MP3Player player = new MP3Player(new File("Asteroid/Orbit_of_the_Dutchman.mp3"));
+    private long startTime;
     /**
      * creates the Jframe with a keylistener and a gamepanel
      */
     public Frame(){
         super("Asteroids");//names the frame
+        player.play();
+        startTime = System.currentTimeMillis();
+
+        int delay = 30;//sets the delay between loopmusic checks
+        ActionListener loopMusic = new ActionListener() {//creates a tast for the timer to execute
+            public void actionPerformed(ActionEvent evt) {
+                long currentTime = System.currentTimeMillis();
+                if(currentTime - startTime > 52000){
+                    startTime = currentTime;
+                    player.play();
+                }
+            }
+        };
+        Timer music = new Timer(delay, loopMusic);//creates the timer
+        music.start();
+        
         ImageIcon img = new ImageIcon("Icon.png");//creates an image 
         setIconImage(img.getImage());//sets the icon of the frame
         addKeyListener(this);//adds a key listener 
@@ -131,6 +152,17 @@ public class Frame extends JFrame implements KeyListener{
             } else {
                 frameRate.start();
                 pause = false;
+            }
+        }
+
+        if(key == KeyEvent.VK_M){//pause
+            if(!mute){
+                player.stop();
+                mute = true;
+            } else {
+                player.play();
+                startTime = System.currentTimeMillis();
+                mute = false;
             }
         }
     }
