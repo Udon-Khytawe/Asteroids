@@ -4,6 +4,8 @@ public class Bullet {
     public int radius;
     public int centerX;
     public int centerY;
+    public int preCenterX;
+    public int preCenterY;
     private double velocity;
     public double angle;
 
@@ -18,6 +20,8 @@ public class Bullet {
     public Bullet(int centerX, int centerY, int radius, double velocity, double angle){
         this.centerX = centerX;
         this.centerY = centerY;
+        preCenterX = centerX;
+        preCenterY = centerY;
         this.radius = radius;
         this.velocity = velocity;
         this.angle = angle;
@@ -36,6 +40,8 @@ public class Bullet {
      * updates the x and y positons of the bullet 
      */
     public void updatePos(){
+        preCenterX = centerX;
+        preCenterY = centerY;
         centerX += velocity*Math.cos(angle);
         centerY += velocity*Math.sin(angle);
     }

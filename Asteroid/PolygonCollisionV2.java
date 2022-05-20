@@ -9,6 +9,9 @@ public class PolygonCollisionV2 {
      * @return true if their is a collision between the two polygons otherwise false.
      */
     public static boolean collide(Polygon p1, Polygon p2){
+        if(new Vector(p1.centerX - p2.centerX, p1.centerY - p2.centerY).abs() > 85){//tests to see wheter the asteroid is outside of collsion radius
+            return false;
+        }
         boolean collide = true; //boolean for testing whether a collision occurs
         Vector[][] normalVectors = new Vector[][]{p1.getNormalVectors(), p2.getNormalVectors()}; //normal vectors for p1 and p2
         int[][] p1Points = new int[][]{p1.getXCoords(), p1.getYCoords()}; //coordinates of p1
@@ -60,20 +63,13 @@ public class PolygonCollisionV2 {
     }
 
     /**
-     * Collides a polgyon and a circle. Only works if the center of the polgyon is the geometric center of the polygon(probably, as in I'm only pretty sure this does what I want)
+     * Collides a polgyon and a line where the line goes through the prevois location of the bullet and the present location of the bullet. This will prevent bullet from skipping over small asteroids.
      * @param p1
      * @param circle
      * @return
      */
-    public static boolean collide(Polygon p1, Bullet circle){
-        double angle;
-        try{//finds the angle between the centers
-            angle = Math.atan((double)(p1.centerY - circle.centerY) / (p1.centerX - circle.centerX));
-        } catch (ArithmeticException e){
-            angle = Math.PI/2;
-        }
-        int pointer = (int)(Math.sqrt(2)*circle.radius);//creates a sqare offset by the angle then this is collided with the polygon, 
-        Polygon square = new Polygon(new int[]{pointer, -pointer, -pointer, pointer}, new int[]{pointer, pointer, -pointer, -pointer}, circle.centerX, circle.centerY, angle, 1);
-        return collide(p1, square);
+    public static boolean collide(Polygon p1, Bullet bullet){
+        Polygon line = new Polygon(new int[]{0, bullet.centerX - bullet.preCenterX}, new int[]{0, bullet.centerY - bullet.preCenterY}, bullet.preCenterX, bullet.preCenterY, 0, 1);
+        return collide(p1, line);
     }
 }

@@ -127,6 +127,4 @@ public class Panel extends JPanel{
         frameCount++;
         return collison;
     }
-
-    //TODO implement a spawn method for spawning asteroids. this will attemp to spawn asteroids when certain condtions are met. Importantly it will be used to spawn asteroids when 
 }
