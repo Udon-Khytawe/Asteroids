@@ -63,7 +63,7 @@ public class PolygonCollisionV2 {
     }
 
     /**
-     * Collides a polgyon and a circle. Only works if the center of the polgyon is the geometric center of the polygon(probably, as in I'm only pretty sure this does what I want)
+     * Collides a polgyon and a line where the line goes through the prevois location of the bullet and the present location of the bullet. This will prevent bullet from skipping over small asteroids.
      * @param p1
      * @param circle
      * @return
