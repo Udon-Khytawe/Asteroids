@@ -50,7 +50,6 @@ public class PsudoPhysics {
         } else if(velocity.abs() > 0){
             velocity.scaleTo(abs*0.95);
         }
-        //TODO limit velocity
 
         if(abs > maxVel)
             velocity.scaleTo(maxVel);

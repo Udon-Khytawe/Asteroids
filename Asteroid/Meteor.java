@@ -38,8 +38,6 @@ public class Meteor extends Polygon{
         setLocation(super.centerX + (int)(velocity*Math.cos(angle)), super.centerY + (int)(velocity*Math.sin(angle)));
     }
 
-    //TODO make multiple asteroids wthin larger asteroids
-
 
     
     

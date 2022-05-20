@@ -68,15 +68,8 @@ public class PolygonCollisionV2 {
      * @param circle
      * @return
      */
-    public static boolean collide(Polygon p1, Bullet circle){
-        double angle;
-        try{//finds the angle between the centers
-            angle = Math.atan((double)(p1.centerY - circle.centerY) / (p1.centerX - circle.centerX));
-        } catch (ArithmeticException e){
-            angle = Math.PI/2;
-        }
-        int pointer = (int)(Math.sqrt(2)*circle.radius);//creates a sqare offset by the angle then this is collided with the polygon, 
-        Polygon square = new Polygon(new int[]{pointer, -pointer, -pointer, pointer}, new int[]{pointer, pointer, -pointer, -pointer}, circle.centerX, circle.centerY, angle, 1);
-        return collide(p1, square);
+    public static boolean collide(Polygon p1, Bullet bullet){
+        Polygon line = new Polygon(new int[]{0, bullet.centerX - bullet.preCenterX}, new int[]{0, bullet.centerY - bullet.preCenterY}, bullet.preCenterX, bullet.preCenterY, 0, 1);
+        return collide(p1, line);
     }
 }
