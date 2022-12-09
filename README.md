@@ -21,4 +21,3 @@ Known Bugs:
 Credits
     Composer- Alex Kim
     Developer- Ethan Woudwyk
-Lore???
